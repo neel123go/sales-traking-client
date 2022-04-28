@@ -1,0 +1,28 @@
+.footer {
+    background-color: #303134;
+}
+
+.social-icon {
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid rgb(255, 255, 255);
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.social-icon a {
+    color: rgb(244, 237, 237);
+    font-size: 18px;
+}
+
+.social-icon:hover {
+    border: 1px solid #F49237;
+}
+
+.social-icon:hover a {
+    color: #F49237;
+}
