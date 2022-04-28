@@ -36,6 +36,7 @@ const SignUp = () => {
         }
     };
 
+    // Navigate User
     useEffect(() => {
         if (user) {
             navigate('/');
@@ -50,7 +51,7 @@ const SignUp = () => {
     // Handle Error
     if (hookError || updateProfileError) {
         errorMessageElement = <div className='text-center text-danger'>
-            <p>{hookError?.message} {updateProfileError?.message}</p>
+            <h5>this is error{hookError?.message} {updateProfileError?.message}</h5>
         </div>
     }
 
@@ -59,7 +60,7 @@ const SignUp = () => {
             <h2 className='my-5'>Create an account</h2>
             <div className='w-50 mx-auto border border-secondary rounded-3 p-5 mt-5 text-start'>
                 <Form onSubmit={handleSignUp}>
-                    <h5 className='text-center text-danger'>{error} {errorMessageElement}</h5>
+                    {error} {errorMessageElement}
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
                         <Form.Control autoComplete='off' name="name" type="name" placeholder="Enter name" />
