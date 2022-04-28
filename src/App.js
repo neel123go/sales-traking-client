@@ -7,6 +7,7 @@ import Login from './Components/Pages/LoginRegister/Login/Login';
 import SignUp from './Components/Pages/LoginRegister/SignUp/SignUp';
 import Footer from './Components/Pages/Shared/Footer/Footer';
 import Blogs from './Components/Pages/Blogs/Blogs';
+import { Toaster } from 'react-hot-toast';
 
 function App() {
   return (
@@ -20,6 +21,7 @@ function App() {
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
       </Routes>
       <Footer></Footer>
+      <Toaster></Toaster>
     </div>
   );
 }

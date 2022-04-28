@@ -20,7 +20,7 @@ const Header = () => {
                             <Nav.Link as={Link} className="fs-5" to="/home">Home</Nav.Link>
                             <Nav.Link as={Link} className="fs-5 mx-4" to="/blogs">Blogs</Nav.Link>
                             {
-                                user ? <button onClick={() => signOut(auth)} className='btn btn-danger'>Log Out</button> :
+                                user ? <button onClick={() => signOut(auth)} className='px-4 btn btn-danger'>Log Out</button> :
                                     <Nav.Link as={Link} className="fs-5" to="/login">Login</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
