@@ -10,7 +10,7 @@ const Footer = () => {
     return (
         <div className='footer py-md-5 py-4 text-center mt-5'>
             <div className='container d-flex justify-content-between align-items-center'>
-                <p className='mt-4 text-light fs-5'>Copyright &copy; {date.getFullYear()} SalasTracking.com</p>
+                <p className='mt-4 text-light fs-5'>Copyright &copy; {date.getFullYear()} SalesTracking.com</p>
                 <div className='d-flex justify-content-center align-items-center'>
                     <div className='social-icon'>
                         <a href="https://www.facebook.com/ayounpaul.neel" target={`_blank`}><FontAwesomeIcon icon={faFacebookF} /></a>
