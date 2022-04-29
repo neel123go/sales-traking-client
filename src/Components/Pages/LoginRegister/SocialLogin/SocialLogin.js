@@ -2,18 +2,20 @@ import React, { useEffect } from 'react';
 import GoogleImg from '../../../../Images/Social/google.png';
 import auth from '../../../../Firebase.init';
 import { useSignInWithGoogle } from 'react-firebase-hooks/auth';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Spinner } from 'react-bootstrap';
 
 const SocialLogin = () => {
     const [signInWithGoogle, user, loading, error] = useSignInWithGoogle(auth);
     let errorMessageElement;
     const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
 
     // Navigate User
     useEffect(() => {
         if (user) {
-            navigate('/');
+            navigate(from, { replace: true });
         };
     }, [user]);
 

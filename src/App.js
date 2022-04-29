@@ -9,6 +9,8 @@ import Footer from './Components/Pages/Shared/Footer/Footer';
 import Blogs from './Components/Pages/Blogs/Blogs';
 import { Toaster } from 'react-hot-toast';
 import NotFound from './Components/Pages/Shared/NotFound/NotFound';
+import AddItems from './Components/Pages/AddItem/AddItem';
+import RequireAuth from './Components/Pages/LoginRegister/RequireAuth/RequireAuth';
 
 function App() {
   return (
@@ -18,6 +20,11 @@ function App() {
         <Route path='/' element={<Home></Home>}></Route>
         <Route path='/home' element={<Home></Home>}></Route>
         <Route path='/blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='/additem' element={
+          <RequireAuth>
+            <AddItems></AddItems>
+          </RequireAuth>
+        }></Route>
         <Route path='/login' element={<Login></Login>}></Route>
         <Route path='/signup' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

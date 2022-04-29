@@ -17,11 +17,14 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto">
-                            <Nav.Link as={Link} className="fs-5" to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} className="fs-5 mx-4" to="/blogs">Blogs</Nav.Link>
+                            <Nav.Link as={Link} className="fs-5 me-3" to="/home">Home</Nav.Link>
+                            <Nav.Link as={Link} className="fs-5 mx-3" to="/blogs">Blogs</Nav.Link>
                             {
-                                user ? <button onClick={() => signOut(auth)} className='px-4 btn btn-danger'>Log Out</button> :
-                                    <Nav.Link as={Link} className="fs-5" to="/login">Login</Nav.Link>}
+                                user ? <div className='d-flex'>
+                                    <Nav.Link as={Link} className="fs-5 mx-3" to="/additem">Add Item</Nav.Link>
+                                    <Nav.Link onClick={() => signOut(auth)} className="text-danger fs-5 ms-3">Sign Out</Nav.Link>
+                                </div> :
+                                    <Nav.Link as={Link} className="fs-5 ms-3" to="/login">Login</Nav.Link>}
                         </Nav>
                     </Navbar.Collapse>
                 </Container>

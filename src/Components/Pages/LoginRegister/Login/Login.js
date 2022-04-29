@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../Firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
@@ -14,6 +14,8 @@ const Login = () => {
     const emailRef = useRef('');
     const passwordRef = useRef('');
     const navigate = useNavigate();
+    let location = useLocation();
+    let from = location.state?.from?.pathname || "/";
     let errorMessageElement;
 
     const handleLogin = (e) => {
@@ -35,10 +37,11 @@ const Login = () => {
         }
     }
 
+    console.log(from);
     // Navigate User
     useEffect(() => {
         if (user) {
-            navigate('/');
+            navigate(from, { replace: true });
         };
     }, [user]);
 
