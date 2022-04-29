@@ -13,6 +13,7 @@ import AddItems from './Components/Pages/AddItem/AddItem';
 import RequireAuth from './Components/Pages/LoginRegister/RequireAuth/RequireAuth';
 import ManageItems from './Components/Pages/ManageItems/ManageItems';
 import InventoryItems from './Components/Pages/InventoryItems/InventoryItems';
+import InventoryItemDetails from './Components/Pages/InventoryItemDetails/InventoryItemDetails';
 
 function App() {
   return (
@@ -20,21 +21,26 @@ function App() {
       <Header></Header>
       <Routes>
         <Route path='/' element={<Home></Home>}></Route>
-        <Route path='/home' element={<Home></Home>}></Route>
-        <Route path='/blogs' element={<Blogs></Blogs>}></Route>
-        <Route path='/additem' element={
+        <Route path='home' element={<Home></Home>}></Route>
+        <Route path='blogs' element={<Blogs></Blogs>}></Route>
+        <Route path='additem' element={
           <RequireAuth>
             <AddItems></AddItems>
           </RequireAuth>
         }></Route>
-        <Route path='/manageItems' element={
+        <Route path='manageItems' element={
           <RequireAuth>
             <ManageItems></ManageItems>
           </RequireAuth>
         }></Route>
-        <Route path='/inventoryItems' element={<InventoryItems></InventoryItems>}></Route>
-        <Route path='/login' element={<Login></Login>}></Route>
-        <Route path='/signup' element={<SignUp></SignUp>}></Route>
+        <Route path='inventory/:id' element={
+          <RequireAuth>
+            <InventoryItemDetails></InventoryItemDetails>
+          </RequireAuth>
+        }></Route>
+        <Route path='inventoryItems' element={<InventoryItems></InventoryItems>}></Route>
+        <Route path='login' element={<Login></Login>}></Route>
+        <Route path='signup' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>
       </Routes>
       <Footer></Footer>

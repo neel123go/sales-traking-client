@@ -10,7 +10,7 @@ const ManageItems = () => {
     const handleDeleteItem = (id) => {
         const deleteStatus = window.confirm('Are you sure to delete this item?');
         if (deleteStatus) {
-            const url = `http://localhost:5000/items/${id}`;
+            const url = `http://localhost:5000/inventory/${id}`;
             fetch(url, {
                 method: 'DELETE'
             })

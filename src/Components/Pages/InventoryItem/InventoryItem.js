@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 const InventoryItem = ({ item }) => {
     return (
@@ -13,7 +14,7 @@ const InventoryItem = ({ item }) => {
                         <p className='fs-5'>Supplier: {item.supplierName}</p>
                         <p className='fs-5'>Quantity: {item.quantity}</p>
                     </div>
-                    <button className='w-100 btn btn-success'>Update</button>
+                    <Link to={`/inventory/${item._id}`}><button className='w-100 btn btn-success'>Update</button></Link>
                 </div>
             </div>
         </div>
