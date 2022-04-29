@@ -37,7 +37,6 @@ const Login = () => {
         }
     }
 
-    console.log(from);
     // Navigate User
     useEffect(() => {
         if (user) {

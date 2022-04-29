@@ -68,7 +68,7 @@ const SignUp = () => {
                     </div>
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>
-                        <Form.Control autoComplete='off' name="name" type="name" placeholder="Enter name" />
+                        <Form.Control autoComplete='off' name="name" type="text" placeholder="Enter name" />
                     </Form.Group>
 
                     <Form.Group className="mb-3">
