@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
@@ -6,6 +6,7 @@ import auth from '../../../Firebase.init';
 
 const AddItems = () => {
     const [user] = useAuthState(auth);
+    const [error, setError] = useState('');
 
     const handleAddItem = (e) => {
         e.preventDefault();
@@ -16,21 +17,25 @@ const AddItems = () => {
         const quantity = e.target.quantity.value;
         const itemInfo = { name, image, description, price, quantity, supplierName: user?.displayName, email: user?.email };
 
-        fetch('http://localhost:5000/addItem', {
-            method: 'POST',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(itemInfo)
-        })
-            .then(res => res.json())
-            .then(data => {
-                if (data) {
-                    toast.success('Item added successfully');
-                    e.target.reset();
-                }
-            });
-
+        if (name === '' || image === '' || description === '' || price === '' || quantity === '') {
+            setError('Field must not be empty');
+        } else {
+            setError('');
+            fetch('http://localhost:5000/addItem', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(itemInfo)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data) {
+                        toast.success('Item added successfully');
+                        e.target.reset();
+                    }
+                });
+        }
     };
 
     return (
@@ -38,6 +43,7 @@ const AddItems = () => {
             <h2 className='my-5'>Add New Inventory Item</h2>
             <div className='w-50 mx-auto border border-secondary rounded-3 p-5 mt-5 text-start'>
                 <Form onSubmit={handleAddItem}>
+                    <p className='text-danger text-center fs-5'>{error}</p>
                     <Form.Group className="mb-3">
                         <Form.Label>Item Name</Form.Label>
                         <Form.Control autoComplete='off' name="name" type="text" placeholder="Enter item name" />

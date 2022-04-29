@@ -1,14 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import { Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
+import { Link } from 'react-router-dom';
+import useInventoryItems from '../../../hooks/useInventoryItems';
 
 const ManageItems = () => {
-    const [items, setItems] = useState([]);
-    useEffect(() => {
-        fetch('http://localhost:5000/items')
-            .then(res => res.json())
-            .then(data => setItems(data));
-    }, []);
+    const [items, setItems] = useInventoryItems();
 
     const handleDeleteItem = (id) => {
         const deleteStatus = window.confirm('Are you sure to delete this item?');
@@ -30,7 +27,7 @@ const ManageItems = () => {
 
     return (
         <div className='container'>
-            <h2 className='my-5'>Manage item Here</h2>
+            <h2 className='my-5'>Manage Inventories</h2>
             {
                 items.length > 0 ?
                     <Table striped bordered hover>
@@ -59,6 +56,7 @@ const ManageItems = () => {
                     </Table>
                     : <h2 className='text-danger text-center'>No Item Found</h2>
             }
+            <Link className='fs-4' to='/additem'><button type="button" className="btn btn-primary">Add new item</button></Link>
         </div>
     );
 };
