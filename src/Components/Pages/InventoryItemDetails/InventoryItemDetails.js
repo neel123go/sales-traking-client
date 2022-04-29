@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
+import { Button, Form } from 'react-bootstrap';
+import toast from 'react-hot-toast';
 import { useParams } from 'react-router-dom';
 
 const InventoryItemDetails = () => {
     const { id } = useParams();
     const [item, setItem] = useState({});
+    const [restockErr, setRestockErr] = useState('');
 
     useEffect(() => {
         const url = `http://localhost:5000/inventory/${id}`;
@@ -12,7 +15,7 @@ const InventoryItemDetails = () => {
             .then(data => setItem(data));
     }, [item]);
 
-    const handleUpdateItem = (quantity, id) => {
+    const handleUpdateItem = (quantity) => {
         const newQuantity = quantity - 1;
         const updateItem = { newQuantity };
 
@@ -28,6 +31,39 @@ const InventoryItemDetails = () => {
             .then(data => {
                 // console.log(data);
             });
+    }
+
+    const handleRestockItem = (e) => {
+        e.preventDefault();
+        const restock = e.target.restock.value;
+
+        if (restock === '') {
+            setRestockErr('Field must not be empty');
+        } else if (restock < 0) {
+            setRestockErr('');
+            setRestockErr('Please enter a valid number');
+        } else {
+            setRestockErr('');
+            const quantity = item.quantity;
+            const newQuantity = parseInt(restock) + parseInt(quantity);
+            const updateItem = { newQuantity };
+
+            const url = `http://localhost:5000/inventory/${id}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    if (data?.modifiedCount > 0) {
+                        e.target.reset();
+                        toast.success('Restock item successfully');
+                    }
+                });
+        }
     }
 
     return (
@@ -46,9 +82,20 @@ const InventoryItemDetails = () => {
                         <p className='mt-3 fs-5 text-start'>Price: ${item.price}</p>
                         <p className='mt-3 fs-5 text-start'>Quantity: {item.quantity}</p>
                         <p className='mt-3 fs-5 text-start'>Sold: {item.sold}</p>
-                        <button onClick={() => handleUpdateItem(item.quantity, item._id)} className='btn btn-primary mt-4'>Delivered</button>
+                        <button onClick={() => handleUpdateItem(item.quantity)} className='btn btn-primary mt-4'>Delivered</button>
                     </div>
                 </div>
+            </div>
+
+            <div className='w-25 mx-auto my-5'>
+                <Form onSubmit={handleRestockItem}>
+                    <Form.Group className="mb-3" controlId="formBasicEmail">
+                        <h3 className='mb-4'>Restock the items</h3>
+                        <p className='text-danger text-center'>{restockErr}</p>
+                        <Form.Control type="number" name="restock" placeholder="Enter restock item" />
+                    </Form.Group>
+                    <Button variant="primary" type="submit">Restock</Button>
+                </Form>
             </div>
         </div>
     );
