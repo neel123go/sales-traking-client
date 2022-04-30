@@ -9,7 +9,7 @@ const InventoryItemDetails = () => {
     const [restockErr, setRestockErr] = useState('');
 
     useEffect(() => {
-        const url = `http://localhost:5000/inventory/${id}`;
+        const url = `https://cryptic-woodland-81029.herokuapp.com/inventory/${id}`;
         fetch(url)
             .then(res => res.json())
             .then(data => setItem(data));
@@ -22,7 +22,7 @@ const InventoryItemDetails = () => {
         } else {
             const updateItem = { newQuantity };
 
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://cryptic-woodland-81029.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {
@@ -52,7 +52,7 @@ const InventoryItemDetails = () => {
             const newQuantity = parseInt(restock) + parseInt(quantity);
             const updateItem = { newQuantity };
 
-            const url = `http://localhost:5000/inventory/${id}`;
+            const url = `https://cryptic-woodland-81029.herokuapp.com/inventory/${id}`;
             fetch(url, {
                 method: 'PUT',
                 headers: {

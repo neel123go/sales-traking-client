@@ -34,7 +34,7 @@ const Login = () => {
         } else {
             setError('');
             await signInWithEmailAndPassword(email, password);
-            fetch('http://localhost:5000/login', {
+            fetch('https://cryptic-woodland-81029.herokuapp.com/login', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'

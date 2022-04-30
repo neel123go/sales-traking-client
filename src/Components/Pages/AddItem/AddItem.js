@@ -22,7 +22,7 @@ const AddItems = () => {
             setError('Field must not be empty');
         } else {
             setError('');
-            fetch('http://localhost:5000/addItem', {
+            fetch('https://cryptic-woodland-81029.herokuapp.com/addItem', {
                 method: 'POST',
                 headers: {
                     'content-type': 'application/json'
