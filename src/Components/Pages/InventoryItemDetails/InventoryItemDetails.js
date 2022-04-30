@@ -78,21 +78,19 @@ const InventoryItemDetails = () => {
     return (
         <div className='min-vh-100'>
             <h2 className='my-5'>Inventory Item Details</h2>
-            <div className='w-75 mx-auto border border-secondary rounded-3'>
-                <div className="d-flex">
-                    <div className='w-50'>
-                        <img className="rounded-3 card-img-top" src={item.image} alt="" />
-                    </div>
-                    <div className="w-50 p-5">
-                        <h5 className='fs-3 my-2'>{item.name}</h5>
-                        <p className='text-secondary mb-4'>Item Id: {item._id}</p>
-                        <p className='mt-3 mb-5'>{item.description}</p>
-                        <p className='mt-3 fs-5 text-start'>Supplier Name: {item.supplierName}</p>
-                        <p className='mt-3 fs-5 text-start'>Price: ${item.price}</p>
-                        <p className='mt-3 fs-5 text-start'>Quantity: {item.quantity}</p>
-                        <p className='mt-3 fs-5 text-start text-danger'>{sold ? 'This product is sold out' : ''}</p>
-                        <button onClick={() => handleUpdateItem(item.quantity)} className='btn btn-primary mt-4'>Delivered</button>
-                    </div>
+            <div className='w-50 mx-auto border border-secondary rounded-3'>
+                <div>
+                    <img className="rounded-3 card-img-top" src={item.image} alt="" />
+                </div>
+                <div className="p-5">
+                    <h5 className='fs-3 my-2'>{item.name}</h5>
+                    <p className='text-secondary mb-4'>Item Id: {item._id}</p>
+                    <p className='mt-3 mb-5'>{item.description}</p>
+                    <p className='m-0 fs-5 text-start'>Supplier Name: {item.supplierName}</p>
+                    <p className='my-2 fs-5 text-start'>Price: ${item.price}</p>
+                    <p className='m-0 fs-5 text-start'>Quantity: {item.quantity}</p>
+                    <p className='my-2 fs-5 text-start text-danger'>{sold ? 'This product is sold out' : ''}</p>
+                    <button onClick={() => handleUpdateItem(item.quantity)} className='btn btn-primary mt-4'>Delivered</button>
                 </div>
             </div>
 

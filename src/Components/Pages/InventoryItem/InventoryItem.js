@@ -8,7 +8,7 @@ const InventoryItem = ({ item }) => {
                 <img src={item.image} className="card-img-top" alt="..." />
                 <div className="card-body">
                     <h5 className="card-title">{item.name}</h5>
-                    <p className="card-text">{item.description}</p>
+                    <p className="card-text">{item.description.slice(0, 70) + ' ....'}</p>
                     <div className='text-start'>
                         <p className='fs-5'>Price: $<span className='fs-3 fw-bolder text-success'>{item.price}</span></p>
                         <p className='fs-5'>Supplier: {item.supplierName}</p>
