@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
 import auth from '../../../Firebase.init';
+import './CheckOut.css';
 
 const CheckOut = () => {
     const [user] = useAuthState(auth);
@@ -23,11 +24,11 @@ const CheckOut = () => {
 
     return (
         <div className='container'>
-            <div className='w-50 mx-auto text-start'>
+            <div className='form-container mx-auto text-start'>
                 {
                     submit ? <p className='fs-3 text-center pt-5 text-success' style={{ height: '70vh' }}>Thank you for Purchasing from us</p>
                         :
-                        <div className='border border-secondary rounded-3 p-5 mt-5 text-start'>
+                        <div className='border border-secondary rounded-3 p-md-5 p-3 mt-5 text-start'>
                             <form onSubmit={handleSubmit}>
                                 <h2 className='mb-4'>Please Purchase</h2>
                                 <p className='text-danger'>{error}</p>

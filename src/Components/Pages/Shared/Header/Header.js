@@ -16,8 +16,8 @@ const Header = () => {
                     <Navbar.Toggle aria-controls="responsive-navbar-nav" />
                     <Navbar.Collapse id="responsive-navbar-nav">
                         <Nav className="ms-auto align-items-center">
-                            <Nav.Link as={Link} className="me-2" to="/home">Home</Nav.Link>
-                            <Nav.Link as={Link} className="mx-2" to="/blogs">Blogs</Nav.Link>
+                            <Nav.Link as={Link} className="me-lg-2" to="/home">Home</Nav.Link>
+                            <Nav.Link as={Link} className="mx-lg-2" to="/blogs">Blogs</Nav.Link>
                             {
                                 user ? <div className='d-lg-flex align-items-center'>
                                     <Nav.Link as={Link} className="mx-2" to="/manageItems">Manage Items</Nav.Link>
