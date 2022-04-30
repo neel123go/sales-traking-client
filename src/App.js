@@ -15,6 +15,7 @@ import ManageItems from './Components/Pages/ManageItems/ManageItems';
 import InventoryItems from './Components/Pages/InventoryItems/InventoryItems';
 import InventoryItemDetails from './Components/Pages/InventoryItemDetails/InventoryItemDetails';
 import MyItems from './Components/Pages/MyItems/MyItems';
+import CheckOut from './Components/Pages/CheckOut/CheckOut';
 
 function App() {
   return (
@@ -44,7 +45,11 @@ function App() {
             <MyItems></MyItems>
           </RequireAuth>
         }></Route>
-        <Route path='inventoryItems' element={<InventoryItems></InventoryItems>}></Route>
+        <Route path='checkout' element={
+          <RequireAuth>
+            <CheckOut></CheckOut>
+          </RequireAuth>
+        }></Route>
         <Route path='login' element={<Login></Login>}></Route>
         <Route path='signup' element={<SignUp></SignUp>}></Route>
         <Route path='*' element={<NotFound></NotFound>}></Route>

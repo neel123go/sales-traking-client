@@ -15,10 +15,9 @@ const AddItems = () => {
         const description = e.target.description.value;
         const price = e.target.price.value;
         const quantity = e.target.quantity.value;
-        const sold = e.target.sold.value;
-        const itemInfo = { name, image, description, price, quantity, sold, supplierName: user?.displayName, email: user?.email };
+        const itemInfo = { name, image, description, price, quantity, supplierName: user?.displayName, email: user?.email };
 
-        if (name === '' || image === '' || description === '' || price === '' || quantity === '' || sold === '') {
+        if (name === '' || image === '' || description === '' || price === '' || quantity === '') {
             setError('Field must not be empty');
         } else {
             setError('');
@@ -71,10 +70,6 @@ const AddItems = () => {
                     <Form.Group className="mb-3">
                         <Form.Label>Item Quantity</Form.Label>
                         <Form.Control autoComplete='off' name="quantity" type="number" placeholder="Enter item quantity" />
-                    </Form.Group>
-                    <Form.Group className="mb-3">
-                        <Form.Label>Sold</Form.Label>
-                        <Form.Control autoComplete='off' name="sold" type="number" placeholder="Enter item sold" />
                     </Form.Group>
 
                     <Button variant="primary" type="submit">Add New Item</Button>

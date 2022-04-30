@@ -7,6 +7,7 @@ const InventoryItemDetails = () => {
     const { id } = useParams();
     const [item, setItem] = useState({});
     const [restockErr, setRestockErr] = useState('');
+    const [sold, setSold] = useState(false);
 
     useEffect(() => {
         const url = `https://cryptic-woodland-81029.herokuapp.com/inventory/${id}`;
@@ -18,7 +19,8 @@ const InventoryItemDetails = () => {
     const handleUpdateItem = (quantity) => {
         const newQuantity = quantity - 1;
         if (newQuantity < 0) {
-            toast.error('Item quantity is already 0, there is nothing to deliver');
+            toast.error('This product is sold out');
+            setSold(true);
         } else {
             const updateItem = { newQuantity };
 
@@ -32,7 +34,9 @@ const InventoryItemDetails = () => {
             })
                 .then(res => res.json())
                 .then(data => {
-                    // console.log(data);
+                    if (data?.modifiedCount > 0) {
+                        toast.success('Item delivered successfully');
+                    }
                 });
         }
     }
@@ -48,6 +52,7 @@ const InventoryItemDetails = () => {
             setRestockErr('Please enter a valid number');
         } else {
             setRestockErr('');
+            setSold(false);
             const quantity = item.quantity;
             const newQuantity = parseInt(restock) + parseInt(quantity);
             const updateItem = { newQuantity };
@@ -85,7 +90,7 @@ const InventoryItemDetails = () => {
                         <p className='mt-3 fs-5 text-start'>Supplier Name: {item.supplierName}</p>
                         <p className='mt-3 fs-5 text-start'>Price: ${item.price}</p>
                         <p className='mt-3 fs-5 text-start'>Quantity: {item.quantity}</p>
-                        <p className='mt-3 fs-5 text-start'>Sold: {item.sold}</p>
+                        <p className='mt-3 fs-5 text-start text-danger'>{sold ? 'This product is sold out' : ''}</p>
                         <button onClick={() => handleUpdateItem(item.quantity)} className='btn btn-primary mt-4'>Delivered</button>
                     </div>
                 </div>
