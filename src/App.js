@@ -12,7 +12,6 @@ import NotFound from './Components/Pages/Shared/NotFound/NotFound';
 import AddItems from './Components/Pages/AddItem/AddItem';
 import RequireAuth from './Components/Pages/LoginRegister/RequireAuth/RequireAuth';
 import ManageItems from './Components/Pages/ManageItems/ManageItems';
-import InventoryItems from './Components/Pages/InventoryItems/InventoryItems';
 import InventoryItemDetails from './Components/Pages/InventoryItemDetails/InventoryItemDetails';
 import MyItems from './Components/Pages/MyItems/MyItems';
 import CheckOut from './Components/Pages/CheckOut/CheckOut';

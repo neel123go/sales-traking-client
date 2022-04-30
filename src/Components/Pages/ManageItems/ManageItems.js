@@ -54,7 +54,11 @@ const ManageItems = () => {
                             }
                         </tbody>
                     </Table>
-                    : <h2 className='text-danger text-center'>No Item Found</h2>
+                    : <div className='d-block min-vh-100 mx-auto'>
+                        <div className="spinner-border" role="status">
+                            <span className="visually-hidden">Loading...</span>
+                        </div>
+                    </div>
             }
             <Link className='fs-4' to='/additem'><button type="button" className="btn btn-primary">Add new item</button></Link>
         </div>
