@@ -9,7 +9,7 @@ const PricePlan = () => {
 
     return (
         <div>
-            <h2 className='my-5'>Find a plan <span className='text-danger'>that's right for your business</span></h2>
+            <h2 className='pt-5 my-5'>Find a plan <span className='text-danger'>that's right for your business</span></h2>
             <div className='container'>
                 <div className="row row-cols-3 g-4">
                     <div className="col">

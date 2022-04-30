@@ -1,0 +1,8 @@
+.ask-question-section {
+    background-image: url('../../../Images/Banner/ask-question-background.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    margin-bottom: -50px;
+}
