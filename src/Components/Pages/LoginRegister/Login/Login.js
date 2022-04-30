@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
@@ -6,6 +6,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import auth from '../../../../Firebase.init';
 import Loading from '../../Shared/Loading/Loading';
 import SocialLogin from '../SocialLogin/SocialLogin';
+import './Login.css';
 
 const Login = () => {
     const [signInWithEmailAndPassword, user, loading, hookError,] = useSignInWithEmailAndPassword(auth);
@@ -74,8 +75,8 @@ const Login = () => {
 
     return (
         <div>
-            <h2 className='my-5'>Please Login</h2>
-            <div className='w-50 mx-auto border border-secondary rounded-3 p-5 mt-5 text-start'>
+            <h2 className='my-md-5 my-4'>Please Login</h2>
+            <div className='form-container mx-auto border border-secondary rounded-3 p-md-5 p-3 mt-5 text-start'>
                 <Form onSubmit={handleLogin}>
                     {errorMessageElement}
                     <div className='text-center text-danger'>

@@ -3,7 +3,7 @@ import React from 'react';
 const Blogs = () => {
     return (
         <div className='min-vh-100 container'>
-            <h2 className='my-5'>Questions Answer</h2>
+            <h2 className='mt-md-5 mt-3'>Questions Answer</h2>
             <div className='text-start pt-4'>
                 <h2>What is the difference between javascript and nodejs?</h2>
                 <p className='mt-3'>Javascript is a client-side scripting language. On the other hand, Nodejs provides an environment to execute Javascript on the server-side. Javascript can only be run in the browsers. On the other hand, we can run javascript outside of the browser with the help of Nodejs. Javascript is used on the client-side. But Nodejs is mostly used on the server-side. Javascript is capable enough to add HTML tags. But Nodejs does not have the capability to add HTML tags.</p>

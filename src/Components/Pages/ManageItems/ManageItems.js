@@ -3,6 +3,7 @@ import { Table } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link } from 'react-router-dom';
 import useInventoryItems from '../../../hooks/useInventoryItems';
+import { XCircleIcon } from '@heroicons/react/solid';
 
 const ManageItems = () => {
     const [items, setItems] = useInventoryItems();
@@ -27,7 +28,7 @@ const ManageItems = () => {
 
     return (
         <div className='container min-vh-100'>
-            <h2 className='my-5'>Manage Inventories</h2>
+            <h2 className='my-sm-5 my-4'>Manage Inventories</h2>
             {
                 items.length > 0 ?
                     <Table striped bordered hover>
@@ -36,7 +37,7 @@ const ManageItems = () => {
                                 <th>Image</th>
                                 <th>Name</th>
                                 <th>Price</th>
-                                <th>Quantity</th>
+                                <th className='d-sm-table-cell d-none'>Quantity</th>
                                 <th className='d-md-table-cell d-none'>SupplierName</th>
                                 <th>Action</th>
                             </tr>
@@ -47,9 +48,10 @@ const ManageItems = () => {
                                     <td><img style={{ width: '50px' }} src={item.image} alt="" /></td>
                                     <td>{item.name}</td>
                                     <td>${item.price}</td>
-                                    <td>{item.quantity}</td>
+                                    <td className='d-sm-table-cell d-none'>{item.quantity}</td>
                                     <td className='d-md-table-cell d-none'>{item.supplierName}</td>
-                                    <td><button onClick={() => handleDeleteItem(item._id)} className='btn btn-danger'>Delete</button></td>
+                                    <td className='d-md-table-cell d-none'><button onClick={() => handleDeleteItem(item._id)} className='btn btn-danger'>Delete</button></td>
+                                    <td className='d-md-none d-table-cell' onClick={() => handleDeleteItem(item._id)}><XCircleIcon style={{ width: '20px', color: '#f82d2d' }}></XCircleIcon></td>
                                 </tr>)
                             }
                         </tbody>

@@ -2,16 +2,14 @@ import React from 'react';
 import { CheckCircleIcon } from '@heroicons/react/solid';
 import { XCircleIcon } from '@heroicons/react/solid';
 import './PricePlan.css';
-import { Link, useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 const PricePlan = () => {
-    const navigate = useNavigate();
-
     return (
         <div>
-            <h2 className='pt-5 my-5'>Find a plan <span className='text-danger'>that's right for your business</span></h2>
+            <h2 className='pt-md-5 my-5'>Find a plan <span className='text-danger'>that's right for your business</span></h2>
             <div className='container'>
-                <div className="row row-cols-3 g-4">
+                <div className="row row-cols-1 row-cols-sm-2 row-cols-lg-3 g-4">
                     <div className="col">
                         <div className="card">
                             <div className="card-body">

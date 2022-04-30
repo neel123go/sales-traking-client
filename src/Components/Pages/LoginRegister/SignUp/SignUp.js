@@ -59,12 +59,12 @@ const SignUp = () => {
 
     return (
         <div>
-            <h2 className='my-5'>Create an account</h2>
-            <div className='w-50 mx-auto border border-secondary rounded-3 p-5 mt-5 text-start'>
+            <h2 className='my-md-5 mt-4'>Create an account</h2>
+            <div className='form-container mx-auto border border-secondary rounded-3 p-md-5 p-3 mt-5 text-start'>
                 <Form onSubmit={handleSignUp}>
                     {errorMessageElement}
                     <div className='text-center text-danger'>
-                        <h5>{error}</h5>
+                        <h5 className='mb-4 mb-md-5'>{error}</h5>
                     </div>
                     <Form.Group className="mb-3">
                         <Form.Label>Name</Form.Label>

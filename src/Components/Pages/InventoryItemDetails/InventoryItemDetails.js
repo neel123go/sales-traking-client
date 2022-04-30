@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
 import { Link, useParams } from 'react-router-dom';
+import './InventoryItemDetails.css';
 
 const InventoryItemDetails = () => {
     const { id } = useParams();
@@ -78,11 +79,11 @@ const InventoryItemDetails = () => {
     return (
         <div className='min-vh-100'>
             <h2 className='my-5'>Inventory Item Details</h2>
-            <div className='w-50 mx-auto border border-secondary rounded-3'>
+            <div className='card-container mx-auto border border-secondary rounded-3'>
                 <div>
                     <img className="rounded-3 card-img-top" src={item.image} alt="" />
                 </div>
-                <div className="p-5">
+                <div className="p-md-5 px-2 py-3">
                     <h5 className='fs-3 my-2'>{item.name}</h5>
                     <p className='text-secondary mb-4'>Item Id: {item._id}</p>
                     <p className='mt-3 mb-5'>{item.description}</p>
@@ -94,7 +95,7 @@ const InventoryItemDetails = () => {
                 </div>
             </div>
 
-            <div className='w-25 mx-auto my-5'>
+            <div className='card-container mx-auto my-5'>
                 <Form onSubmit={handleRestockItem}>
                     <Form.Group className="mb-3" controlId="formBasicEmail">
                         <h3 className='mb-4'>Restock the items</h3>

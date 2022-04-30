@@ -3,8 +3,8 @@ import LoadingImg from '../../../../Images/Loading/loading-img.gif';
 
 const Loading = () => {
     return (
-        <div className='w-50 mx-auto min-vh-100'>
-            <img className='w-50 mx-auto mt-5' src={LoadingImg} alt="" />
+        <div className='d-flex py-5 my-5 justify-content-center align-items-center'>
+            <img className='w-25 mx-auto my-5' src={LoadingImg} alt="" />
         </div>
     );
 };

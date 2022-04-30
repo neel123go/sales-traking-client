@@ -28,7 +28,7 @@ const SocialLogin = () => {
 
     // Handle Error
     if (error) {
-        errorMessageElement = <div className='text-center text-danger mt-3'>
+        errorMessageElement = <div className='text-center text-danger mt-3 fs-6'>
             <h5>{error?.message}</h5>
         </div>
     }
@@ -42,7 +42,7 @@ const SocialLogin = () => {
                 <div style={{ height: '1px' }} className='bg-secondary w-50'></div>
             </div>
             <div className='text-center mt-3'>
-                <button onClick={() => signInWithGoogle()} className='btn btn-light border border-primary me-3'><img style={{ width: '25px' }} src={GoogleImg} alt="" /> Continue With Google</button>
+                <button onClick={() => signInWithGoogle()} className='btn btn-light border border-primary me-md-3'><img style={{ width: '25px' }} src={GoogleImg} alt="" /> <span className='d-sm-inline-block d-none'>Continue With </span> Google</button>
             </div>
         </div>
     );
