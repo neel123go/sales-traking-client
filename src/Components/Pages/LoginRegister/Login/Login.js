@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import { useSendPasswordResetEmail, useSignInWithEmailAndPassword } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
@@ -18,6 +18,14 @@ const Login = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     let errorMessageElement;
+    const [token, setToken] = useState(false);
+
+    // Navigate User
+    useEffect(() => {
+        if (token) {
+            navigate(from, { replace: true });
+        };
+    }, [user]);
 
     const handleLogin = async (e) => {
         e.preventDefault();
@@ -45,7 +53,7 @@ const Login = () => {
                 .then(res => res.json())
                 .then(data => {
                     localStorage.setItem('accessToken', data.accessToken);
-                    navigate(from, { replace: true });
+                    setToken(true);
                 });
         }
     }
