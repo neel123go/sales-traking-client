@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Button, Form } from 'react-bootstrap';
 import toast from 'react-hot-toast';
-import { useParams } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const InventoryItemDetails = () => {
     const { id } = useParams();
@@ -17,20 +17,24 @@ const InventoryItemDetails = () => {
 
     const handleUpdateItem = (quantity) => {
         const newQuantity = quantity - 1;
-        const updateItem = { newQuantity };
+        if (newQuantity < 0) {
+            toast.error('Item quantity is already 0, there is nothing to deliver');
+        } else {
+            const updateItem = { newQuantity };
 
-        const url = `http://localhost:5000/inventory/${id}`;
-        fetch(url, {
-            method: 'PUT',
-            headers: {
-                'content-type': 'application/json'
-            },
-            body: JSON.stringify(updateItem)
-        })
-            .then(res => res.json())
-            .then(data => {
-                // console.log(data);
-            });
+            const url = `http://localhost:5000/inventory/${id}`;
+            fetch(url, {
+                method: 'PUT',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(updateItem)
+            })
+                .then(res => res.json())
+                .then(data => {
+                    // console.log(data);
+                });
+        }
     }
 
     const handleRestockItem = (e) => {
@@ -67,7 +71,7 @@ const InventoryItemDetails = () => {
     }
 
     return (
-        <div>
+        <div className='min-vh-100'>
             <h2 className='my-5'>Inventory Item Details</h2>
             <div className='w-75 mx-auto border border-secondary rounded-3'>
                 <div className="d-flex">
@@ -97,6 +101,7 @@ const InventoryItemDetails = () => {
                     <Button variant="primary" type="submit">Restock</Button>
                 </Form>
             </div>
+            <Link className='fs-4' to='/manageItems'><button type="button" className="btn btn-primary">Manage Inventories</button></Link>
         </div>
     );
 };

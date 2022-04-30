@@ -1,11 +1,28 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { Table } from 'react-bootstrap';
+import { useAuthState } from 'react-firebase-hooks/auth';
 import toast from 'react-hot-toast';
-import { Link } from 'react-router-dom';
-import useInventoryItems from '../../../hooks/useInventoryItems';
+import auth from '../../../Firebase.init';
 
-const ManageItems = () => {
-    const [items, setItems] = useInventoryItems();
+const MyItems = () => {
+    const [user] = useAuthState(auth);
+    const [items, setItems] = useState([]);
+
+    useEffect(() => {
+        const url = `http://localhost:5000/myItems?email=${user?.email}`;
+        fetch(url, {
+            method: 'GET',
+            headers: {
+                'authorization': `Bearer ${localStorage.getItem('accessToken')}`,
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify()
+        })
+            .then(res => res.json())
+            .then(data => {
+                setItems(data);
+            });
+    }, [user]);
 
     const handleDeleteItem = (id) => {
         const deleteStatus = window.confirm('Are you sure to delete this item?');
@@ -27,7 +44,7 @@ const ManageItems = () => {
 
     return (
         <div className='container min-vh-100'>
-            <h2 className='my-5'>Manage Inventories</h2>
+            <h2 className='my-5'>My Items</h2>
             {
                 items.length > 0 ?
                     <Table striped bordered hover>
@@ -56,9 +73,8 @@ const ManageItems = () => {
                     </Table>
                     : <h2 className='text-danger text-center'>No Item Found</h2>
             }
-            <Link className='fs-4' to='/additem'><button type="button" className="btn btn-primary">Add new item</button></Link>
         </div>
     );
 };
 
-export default ManageItems;
+export default MyItems;

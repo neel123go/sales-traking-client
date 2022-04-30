@@ -18,7 +18,7 @@ const Login = () => {
     let from = location.state?.from?.pathname || "/";
     let errorMessageElement;
 
-    const handleLogin = (e) => {
+    const handleLogin = async (e) => {
         e.preventDefault();
         const email = emailRef.current.value;
         const password = passwordRef.current.value;
@@ -33,16 +33,21 @@ const Login = () => {
             setError('Your password must be at least 8 characters or longer');
         } else {
             setError('');
-            signInWithEmailAndPassword(email, password);
+            await signInWithEmailAndPassword(email, password);
+            fetch('http://localhost:5000/login', {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify({ email })
+            })
+                .then(res => res.json())
+                .then(data => {
+                    localStorage.setItem('accessToken', data.accessToken);
+                    navigate(from, { replace: true });
+                });
         }
     }
-
-    // Navigate User
-    useEffect(() => {
-        if (user) {
-            navigate(from, { replace: true });
-        };
-    }, [user]);
 
     // Handle Loading
     if (loading || sending) {
