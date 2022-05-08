@@ -18,11 +18,10 @@ const Login = () => {
     let location = useLocation();
     let from = location.state?.from?.pathname || "/";
     let errorMessageElement;
-    const [token, setToken] = useState(false);
 
     // Navigate User
     useEffect(() => {
-        if (token) {
+        if (user) {
             navigate(from, { replace: true });
         };
     }, [user]);
@@ -53,7 +52,6 @@ const Login = () => {
                 .then(res => res.json())
                 .then(data => {
                     localStorage.setItem('accessToken', data.accessToken);
-                    setToken(true);
                 });
         }
     }
